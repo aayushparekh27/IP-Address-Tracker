@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IP Address Tracker</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header Section -->
+  <header class="header">
+    <div class="container">
+      <h1><i class="fas fa-map-marker-alt"></i> IP Address Tracker</h1>
+      <p class="subtitle">Find location and details for any IP address</p>
+    </div>
+  </header>
+
+  <main class="container main-container">
+    <!-- Search Section -->
+    <section class="search-section">
+      <div class="search-container">
+        <div class="search-box">
+          <div class="search-icon">
+            <i class="fas fa-search"></i>
+          </div>
+          <input
+            type="text"
+            id="ipInput"
+            placeholder="Enter an IP address (e.g., 8.8.8.8) or leave empty for your own IP"
+          />
+          <button id="trackBtn" onclick="trackIP()">
+            <i class="fas fa-location-arrow"></i> Track IP
+          </button>
+          <button id="locateBtn" onclick="locateMe()" title="Use my current location">
+            <i class="fas fa-location-crosshairs"></i>
+          </button>
+        </div>
+        <p class="search-hint">
+          <i class="fas fa-lightbulb"></i> Try: 8.8.8.8 (Google), 1.1.1.1 (Cloudflare), or leave empty for your IP
+        </p>
+      </div>
+    </section>
+
+    <!-- Info Cards Section -->
+    <section class="info-section">
+      <div class="info-grid">
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-globe"></i>
+          </div>
+          <div class="card-content">
+            <h3>IP Address</h3>
+            <p id="ipField" class="card-value">--.--.--.--</p>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-map-pin"></i>
+          </div>
+          <div class="card-content">
+            <h3>Location</h3>
+            <p id="locationField" class="card-value">Unknown</p>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-flag"></i>
+          </div>
+          <div class="card-content">
+            <h3>Country</h3>
+            <p id="countryField" class="card-value">Unknown</p>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-wifi"></i>
+          </div>
+          <div class="card-content">
+            <h3>ISP</h3>
+            <p id="ispField" class="card-value">Unknown</p>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-clock"></i>
+          </div>
+          <div class="card-content">
+            <h3>Timezone</h3>
+            <p id="timezoneField" class="card-value">Unknown</p>
+          </div>
+        </div>
+        
+        <div class="info-card">
+          <div class="card-icon">
+            <i class="fas fa-satellite-dish"></i>
+          </div>
+          <div class="card-content">
+            <h3>Coordinates</h3>
+            <p id="coordinatesField" class="card-value">0, 0</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+      <div class="map-header">
+        <h2><i class="fas fa-map"></i> Location Map</h2>
+        <p id="mapCoordinates">Latitude: 0, Longitude: 0</p>
+      </div>
+      <div id="map"></div>
+      <div class="map-controls">
+        <button id="zoomIn"><i class="fas fa-plus"></i></button>
+        <button id="zoomOut"><i class="fas fa-minus"></i></button>
+        <button id="resetView"><i class="fas fa-sync-alt"></i> Reset</button>
+      </div>
+    </section>
+
+    <!-- Recent Searches -->
+    <section class="history-section">
+      <h2><i class="fas fa-history"></i> Recent Searches</h2>
+      <div id="searchHistory" class="history-container">
+        <p class="empty-history">No recent searches yet. Your searches will appear here.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>IP Address Tracker &copy; 2026| Data provided by <a href="https://get.geojs.io/" target="_blank">GeoJS</a> | Map by <a href="https://leafletjs.com/" target="_blank">Leaflet</a></p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
